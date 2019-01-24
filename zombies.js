@@ -8,6 +8,12 @@
  * @property {string} name
  */
 
+class Item {
+  constructor(name){
+    this.name = name;
+  }
+};
+
 
 /**
  * Class => Weapon(name, damage)
@@ -31,7 +37,12 @@
  * -----------------------------
  */
 
-
+class Weapon extends Item {
+  constructor (name, damage) {
+    super (name);
+    this.damage = damage;
+  }
+}
 
 /**
  * Class => Food(name, energy)
@@ -49,13 +60,17 @@
  * @property {number} energy
  */
 
-
 /**
  * Food Extends Item Class
  * -----------------------------
  */
 
-
+class Food extends Item {
+  constructor (name, energy) {
+    super (name);
+    this.energy = energy;
+  }
+}
 
 /**
  * Class => Player(name, health, strength, speed)
@@ -79,6 +94,27 @@
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
+class Player {
+  constructor(name, health, strength, speed){
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this._pack = [];
+    this._maxHealth = health;
+    this.isAlive = true;
+    this.equipped = false;
+  };
+
+    getPack() {
+      return this._pack;
+    }
+    
+    getMaxHealth () {
+      return this._maxHealth;
+    }
+
+
 
 /**
  * Player Class Method => checkPack()
@@ -91,6 +127,11 @@
  *
  * @name checkPack
  */
+
+checkPack() {
+    console.log('this.pack:', this._pack);
+}
+
 
 
 /**
@@ -111,6 +152,15 @@
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
+takeItem(Item) {
+  if(this._pack.length < 3){
+    console.log(Player.name + ' successfully yoinked ' + Item.name);
+    return true;
+  }else{
+    console.log('Pack is at capacity, cannot take the item.');
+    return false;
+  }
+};
 
 /**
  * Player Class Method => discardItem(item)
@@ -323,6 +373,10 @@
  * Sample run.
  * Feel free to edit this and check your game logic.
  */
+
+ }
+
+
 function runGame() {
   // var player = new Player("Joan", 500, 30, 70);
   // var zombie = new Zombie(40, 50, 20);
