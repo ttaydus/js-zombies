@@ -152,11 +152,15 @@ checkPack() {
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
-takeItem(Item) {
+
+
+takeItem(item) {
   if(this._pack.length < 3){
-    console.log(Player.name + ' successfully yoinked ' + Item.name);
+    console.log(this.name + ' successfully yoinked ' + item.name);
+    this._pack.push(item);
+    //console.log('length:',this._pack.length);
     return true;
-  }else{
+  }else if(this._pack.length >= 3){
     console.log('Pack is at capacity, cannot take the item.');
     return false;
   }
@@ -187,6 +191,20 @@ takeItem(Item) {
  * @param {Item/Weapon/Food} item   The item to discard.
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
+
+
+discardItem(item) {
+  const ind = this._pack.indexOf(item);
+  if(ind === -1){
+    console.log('Item not found in pack.');
+    return false;
+  }else{
+    this._pack.splice(ind,1);
+    console.log(this.name + ' dropped ' + item.name);
+    return true;
+  }
+};
+
 
 
 /**
