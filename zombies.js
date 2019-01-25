@@ -227,6 +227,32 @@ discardItem(item) {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+equip(itemToEquip) {
+  const holdItem = [];
+  //item is a Weapon
+  if(itemToEquip instanceof Weapon){
+    //weapon is inside the pack
+    if((this._pack.indexOf(itemToEquip)) !== -1){
+      //a weapon is already equipped
+      if(this.equipped !== false){
+        //put equipped item in a holding const
+        holdItem.push(this.equipped);
+        //set equipped to itemToEquip
+        this.equipped = itemToEquip;
+        //get rid of itemToEquip out of pack
+        discardItem(itemToEquip);
+        //put in original weapon, from holding const, into pack
+        takeItem(holdItem[0]);
+      //no weapon is equipped
+      }else{
+        //equip the item
+        this.equipped === itemToEquip;
+        //remove it from the pack
+        discardItem(itemToEquip);
+      }
+    }
+  }
+};
 
 /**
  * Player Class Method => eat(itemToEat)
@@ -247,6 +273,13 @@ discardItem(item) {
  * @param {Food} itemToEat  The food item to eat.
  */
 
+// eat(itemToEat){
+//   if(itemToEat instanceof Food){
+//     if((this._pack.indexOf(itemToEquip)) !== -1){
+
+//     }
+//   }
+// };
 
 /**
  * Player Class Method => useItem(item)
@@ -392,7 +425,7 @@ discardItem(item) {
  * Feel free to edit this and check your game logic.
  */
 
- }
+ };
 
 
 function runGame() {
@@ -430,4 +463,4 @@ function runGame() {
   // player.useItem(sandwich);
   // console.log("After health: " + player.health);
   // player.checkPack();
-}
+};
