@@ -229,10 +229,11 @@ discardItem(item) {
 
 equip(itemToEquip) {
   const holdItem = [];
+
   //item is a Weapon
   if(itemToEquip instanceof Weapon){
     //weapon is inside the pack
-    if((this._pack.indexOf(itemToEquip)) !== -1){
+    if((this._pack.indexOf(itemToEquip)) >= 0){
       //a weapon is already equipped
       if(this.equipped !== false){
         //put equipped item in a holding const
