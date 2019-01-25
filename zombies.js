@@ -8,7 +8,7 @@
  * @property {string} name
  */
 
-class Item {
+class Item{
   constructor(name){
     this.name = name;
   }
@@ -273,13 +273,6 @@ equip(itemToEquip) {
  * @param {Food} itemToEat  The food item to eat.
  */
 
-// eat(itemToEat){
-//   if(itemToEat instanceof Food){
-//     if((this._pack.indexOf(itemToEquip)) !== -1){
-
-//     }
-//   }
-// };
 
 /**
  * Player Class Method => useItem(item)
@@ -425,7 +418,7 @@ equip(itemToEquip) {
  * Feel free to edit this and check your game logic.
  */
 
- };
+ }
 
 
 function runGame() {
@@ -463,4 +456,4 @@ function runGame() {
   // player.useItem(sandwich);
   // console.log("After health: " + player.health);
   // player.checkPack();
-};
+}
