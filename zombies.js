@@ -8,6 +8,7 @@
  * @property {string} name
  */
 
+class Item{
   constructor(name){
     this.name = name;
   }
