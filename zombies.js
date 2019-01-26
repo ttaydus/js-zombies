@@ -227,6 +227,53 @@ discardItem(item) {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+equip(itemToEquip) {
+  const indexOfItemToEquip = this._pack.indexOf(itemToEquip);
+  const currEquip = this.equipped;
+  //check if the item to equip is a Weapon
+  if(itemToEquip instanceof Weapon){
+    //check if itemToEquip is within pack
+    if(this._pack.indexOf(itemToEquip) >= 0){
+      //if equipped doesn't equal false (default empty setting)
+      if(this.equipped){
+        //set equip to itemToEquip
+        this.equipped = this._pack[indexOfItemToEquip]
+        //swap equipped into pack @ index of itemToEquip
+        this._pack.splice(indexOfItemToEquip, 1, currEquip);
+      //if there is nothing equipped
+      }else{
+        //set equip to itemToEquip
+        this.equipped = this._pack[indexOfItemToEquip]
+        this._pack.splice(indexOfItemToEquip,1);
+      }
+    }
+  }
+};
+
+
+// equip(itemToEquip) {
+//   debugger;
+//   const indexOfWeaponInPack = this._pack.indexOf(itemToEquip);
+//   //item is a Weapon
+//   if(itemToEquip instanceof Weapon){
+//     //weapon is inside the pack
+//     if(indexOfWeaponInPack >= 0){
+//       //a weapon is already equipped
+//       if(this.equipped === true){
+//         //remove equipped weapon and put it into pack
+//         this._pack.splice(indexOfWeaponInPack, 1, this.equipped);
+//         //set equipped to itemToEquip
+//         this.equipped = itemToEquip;
+//       //no weapon is equipped
+//       }else if(this.equipped === false){
+//         //equip the item
+//         this.equipped = itemToEquip;
+//         //remove it from the pack
+//         discardItem(itemToEquip);
+//       }
+//     }
+//   }
+// };
 
 /**
  * Player Class Method => eat(itemToEat)
