@@ -310,6 +310,7 @@ eat(itemToEat) {
         this.health = this.health + itemToEat.energy;
         // remove item
         this._pack.splice(indexOfItemToEat,1);
+      // maxHealth < curr health + energy of food
       }else{
         // = max health
         this.health = this.getMaxHealth();
@@ -333,6 +334,16 @@ eat(itemToEat) {
  * @param {Item/Weapon/Food} item   The item to use.
  */
 
+useItem(item){
+  if(item instanceof Weapon){
+    //console.log('weapon');
+    this.equip(item);
+  }
+  else if(item instanceof Food){
+    //console.log('food');
+    this.eat(item);
+  }
+};
 
 /**
  * Player Class Method => equippedWith()
