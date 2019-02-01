@@ -294,6 +294,31 @@ equip(itemToEquip) {
  * @param {Food} itemToEat  The food item to eat.
  */
 
+eat(itemToEat) {
+  const indexOfItemToEat = this._pack.indexOf(itemToEat);
+  // can only eat food instances
+  if(itemToEat instanceof Food){
+    // can only eat items from their pack
+    if(indexOfItemToEat >= 0){
+      // console.log('health:', this.health)
+      // console.log('maxHealth:', this.getMaxHealth());
+      // console.log('itemToEat:', itemToEat.energy);
+      
+      // maxHealth >= curr health + energy of food
+      if(this.getMaxHealth() >= this.health + itemToEat.energy){
+        // add energy
+        this.health = this.health + itemToEat.energy;
+        // remove item
+        this._pack.splice(indexOfItemToEat,1);
+      }else{
+        // = max health
+        this.health = this.getMaxHealth();
+        //remove item
+        this._pack.splice(indexOfItemToEat, 1);
+      }
+    }
+  }
+};
 
 /**
  * Player Class Method => useItem(item)
