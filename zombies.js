@@ -369,6 +369,8 @@ equippedWith (){
     console.log(this.name + ' is NOT equipped');
     return false;
   }
+}
+
 };
 
 /**
@@ -387,6 +389,15 @@ equippedWith (){
  * @property {boolean} isAlive      Default value should be `true`.
  */
 
+class Zombie {
+  constructor(health, strength, speed){
+    this._maxHealth = health;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this.isAlive = true;
+  }
+};
 
 /**
  * Class => FastZombie(health, strength, speed)
@@ -403,13 +414,16 @@ equippedWith (){
  * @param {number} speed            The zombie's speed.
  */
 
-
 /**
  * FastZombie Extends Zombie Class
  * -----------------------------
  */
 
-
+class FastZombie extends Zombie{
+  constructor(health, strength, speed){
+    super(health, strength, speed);
+  }
+};
 
 /**
  * Class => StrongZombie(health, strength, speed)
@@ -432,7 +446,11 @@ equippedWith (){
  * -----------------------------
  */
 
-
+class StrongZombie extends Zombie{
+  constructor(health, strength, speed){
+    super(health, strength, speed);
+  }
+};
 
 /**
  * Class => RangedZombie(health, strength, speed)
@@ -455,7 +473,11 @@ equippedWith (){
  * -----------------------------
  */
 
-
+class RangedZombie extends Zombie{
+  constructor(health, strength, speed){
+    super(health, strength, speed);
+  }
+};
 
 /**
  * Class => ExplodingZombie(health, strength, speed)
@@ -478,15 +500,17 @@ equippedWith (){
  * -----------------------------
  */
 
-
+class ExplodingZombie extends Zombie{
+  constructor(health, strength, speed){
+    super(health, strength, speed);
+  }
+};
 
 
 /**
  * Sample run.
  * Feel free to edit this and check your game logic.
  */
-
- }
 
 
 function runGame() {
