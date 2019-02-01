@@ -359,6 +359,17 @@ useItem(item){
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
+equippedWith (){
+  // something is equipped
+  if(this.equipped){
+    console.log(this.name + ' is equipped with ' + this.equipped.name);
+    return this.equipped.name;
+  //nothing is equipped
+  }else{
+    console.log(this.name + ' is NOT equipped');
+    return false;
+  }
+};
 
 /**
  * Class => Zombie(health, strength, speed)
